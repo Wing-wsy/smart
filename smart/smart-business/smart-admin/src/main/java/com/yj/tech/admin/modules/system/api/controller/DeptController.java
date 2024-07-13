@@ -55,7 +55,7 @@ public class DeptController {
     }
 
     @Operation(summary = "新增部门",description = "新增或者更新部门")
-    @PostMapping("/dept/saveOrUpdate") // tesg
+    @PostMapping("/dept/saveOrUpdate")
     public Result saveOrUpdate(@RequestBody Dept dept){
         return Result.success(deptService.saveOrUpdate(dept));
     }
