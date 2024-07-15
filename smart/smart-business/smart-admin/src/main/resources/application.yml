@@ -49,12 +49,15 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       # 加载的包名
-      packages-to-scan: com.yj.tech.admin.modules
+      packages-to-scan: com.yj.tech.admin.controller
 
-# 开启日志打印
+
 mybatis-plus:
   configuration:
+    # 开启日志打印
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 扫描mapper.xml
+  mapper-locations: classpath*:/com/yj/tech/common/mapper/*.xml
 
 
 #mybatis-plus:

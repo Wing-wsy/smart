@@ -2,7 +2,7 @@ package com.yj.tech.admin.aspectj;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.json.JSONUtil;
-import com.yj.tech.util.LogUtil;
+import com.yj.tech.common.util.LogUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,23 +26,16 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * <p>
  * 使用 aop 切面记录请求日志信息
- * </p>
- *
- * @author yangkai.shen
- * @author chen qi
- * @date Created in 2018-10-01 22:05
  */
 @Aspect
 @Component
 public class AopLog {
     /**
-     * 切入点【modules包下，包括子包以 Controller 结尾的控制器全部方法打印请求接口入参和接口响应出参】
+     * 切入点【controller包下，包括子包以 Controller 结尾的控制器全部方法打印请求接口入参和接口响应出参】
      */
-    @Pointcut("execution(public * com.yj.tech.admin.modules..*Controller.*(..))")
+    @Pointcut("execution(public * com.yj.tech.admin.controller..*Controller.*(..))")
     public void log() {
-
     }
 
     /**
