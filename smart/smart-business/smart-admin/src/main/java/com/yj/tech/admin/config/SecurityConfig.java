@@ -23,7 +23,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.RegexRequestMatcher;
 
 @Configuration
-@Slf4j
 @EnableWebSecurity
 public class SecurityConfig {
     @Autowired

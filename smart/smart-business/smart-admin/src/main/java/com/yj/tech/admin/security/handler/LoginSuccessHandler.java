@@ -4,6 +4,7 @@ import com.yj.tech.admin.util.JwtUtils;
 import com.yj.tech.common.entity.User;
 import com.yj.tech.common.entity.Role;
 import com.yj.tech.common.util.DateUtils;
+import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.web.restful.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +20,6 @@ import java.util.stream.Collectors;
 /**
  *  登录成功处理器
  */
-@Slf4j
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
@@ -38,8 +38,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         data.put("accessToken",token);
         data.put("refreshToken",token);
         data.put("expires", DateUtils.format(DateUtils.addDay(30)));
+        LogUtil.info(getClass(), "登录成功 {}",user.getUsername());
 
-        log.info("登录成功 {}",user.getUsername());
 
         response.getWriter().write(Result.okJSON(data));
     }

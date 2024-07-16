@@ -1,5 +1,6 @@
 package com.yj.tech.admin.security.handler;
 
+import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.web.restful.Result;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,6 @@ import java.io.IOException;
 /**
  *  认证失败处理 - 前后端分离情况下返回json数据格式
  */
-@Slf4j
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 
     @Override
@@ -35,7 +35,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         } else if (e instanceof DisabledException) {
             result = "账户被禁用，请联系管理员!";
         } else {
-            log.error("登录失败：", e);
+            LogUtil.error(getClass(), "登录失败：", e);
             result = "登录失败!";
         }
 
