@@ -19,6 +19,7 @@
 
         <association property="parent" column="parent_id" javaType="com.yj.tech.common.entity.Menu" select="com.yj.tech.common.mapper.MenuMapper.selectByParentId" />
 
+        <!-- Menu type = 2 接口类型使用  -->
         <collection property="perms" column="id" ofType="com.yj.tech.common.entity.Perm" select="com.yj.tech.common.mapper.PermMapper.getSelectedPermsByMenuId" />
 
         <collection property="roles" column="id" ofType="com.yj.tech.common.entity.Role" select="com.yj.tech.common.mapper.RoleMapper.getSelectedRolesByMenuId" />
