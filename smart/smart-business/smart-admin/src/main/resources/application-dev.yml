@@ -16,3 +16,20 @@ vmPlace: generator
 
 serverPath: http://localhost:8001/
 upload: g:/aServer
+  
+xxl:
+  job:
+    admin:
+      ### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+      addresses: http://localhost:7071/xxl-job-admin
+    accessToken: default_token
+    executor:
+      appname: xxl-job-executor-sample
+      ip: 127.0.0.1
+      port: 9001
+      ### xxl-job executor log-path
+      logpath: /Users/wing/architect/XXL_JOB/xxl-job-master/logs
+      ### xxl-job executor log-retention-days
+      logretentiondays: 30
+
+
