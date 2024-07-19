@@ -22,6 +22,8 @@ xxl:
     admin:
       ### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
       addresses: http://localhost:7071/xxl-job-admin
+      jobInfoUri: /jobinfo
+      jobGroupUri: /jobgroup
     accessToken: default_token
     executor:
       appname: xxl-job-executor-sample

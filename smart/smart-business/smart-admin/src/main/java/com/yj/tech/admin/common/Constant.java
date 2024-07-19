@@ -38,6 +38,11 @@ public class Constant {
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/favicon.ico",
+
+            // xxl-job 请求先不拦截，后续开发了页面需要拦截
+            "/xxl-job/group",
+            "/xxl-job/list",
+
     };
 
     public static List<String> annosList = Arrays.asList(annos);
