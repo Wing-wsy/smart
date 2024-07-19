@@ -10,6 +10,7 @@
     <description>smart-technology</description>
     <modules>
         <module>smart-common</module>
+        <module>xxl-job-core</module>
     </modules>
 
     <properties>

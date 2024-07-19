@@ -10,6 +10,7 @@
     <description>smart-business</description>
     <modules>
         <module>smart-admin</module>
+        <module>xxl-job-admin</module>
     </modules>
 
     <properties>
