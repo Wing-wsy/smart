@@ -42,6 +42,12 @@ public class Constant {
             // xxl-job 请求先不拦截，后续开发了页面需要拦截
             "/xxl-job/group",
             "/xxl-job/list",
+            "/xxl-job/trigger",
+            "/xxl-job/start",
+            "/xxl-job/add",
+            "/xxl-job/stop",
+            "/xxl-job/remove",
+            "/xxl-job/update",
 
     };
 

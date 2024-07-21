@@ -29,6 +29,11 @@ public class SampleXxlJob {
         System.out.println("执行任务啦" + new Date());
     }
 
+    @XxlJob("workHandler")
+    public void demoJobHandler1() throws Exception {
+        System.out.println("执行任务啦111" + new Date());
+    }
+
 
     /**
      * 2、分片广播任务
