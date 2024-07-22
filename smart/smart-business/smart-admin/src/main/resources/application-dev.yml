@@ -8,6 +8,16 @@ spring:
     username: root
     password: P@ssw0rd123!
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: 100ms
 
 #生成的代码存放目录:resources下
 filePlace: tmp
@@ -16,7 +26,8 @@ vmPlace: generator
 
 serverPath: http://localhost:8001/
 upload: g:/aServer
-  
+
+# xxl
 xxl:
   job:
     admin:
@@ -33,5 +44,4 @@ xxl:
       logpath: /Users/wing/architect/XXL_JOB/xxl-job-master/logs
       ### xxl-job executor log-retention-days
       logretentiondays: 30
-
 
