@@ -23,7 +23,6 @@ public class Constant {
     public String vmPlace;
 
     public static String[] annos = {
-            "/test/log",
             "/register",
             "/login",
             "/unAuth",
@@ -38,6 +37,12 @@ public class Constant {
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/favicon.ico",
+
+            // 测试地址放行
+            "/test/log",
+            "/test/redisRock",
+            "/test/redisRock1",
+            "/test/redisRock2",
 
             // xxl-job 请求先不拦截，后续开发了页面需要拦截
             "/xxl-job/group",

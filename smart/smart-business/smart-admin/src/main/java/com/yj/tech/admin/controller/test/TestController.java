@@ -6,6 +6,7 @@ import com.yj.tech.common.entity.Menu;
 import com.yj.tech.common.util.JsonUtil;
 import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.web.restful.Result;
+import com.yj.tech.redis.lock.RedisDistributedLock;
 import com.yj.tech.redis.service.RedisService;
 import com.yj.tech.redis.util.RedisKeyUtil;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,6 +33,9 @@ public class TestController {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisDistributedLock redisDistributedLock;
 
     @Resource
     private RedisService redisService;
@@ -68,6 +72,90 @@ public class TestController {
 
         // 设置 name key 有效期 20秒
         redisService.expireKey("name",20, TimeUnit.SECONDS);
+
+        return Result.success();
+    }
+
+    @ApiOperationSupport(order = 1, author = "wing")
+    @Operation(summary = "redis锁测试[非阻塞式获取锁]")
+    @GetMapping("/redisRock")
+    public Result isRedisRock() {
+
+        String key = "redis:rock:1";
+        boolean flag = redisDistributedLock.tryLock(key);
+        if (!flag) {
+            System.out.println(Thread.currentThread() + ":获取锁失败");
+            return Result.error(null);
+        }
+        try {
+            System.out.println(Thread.currentThread() + ":获取锁成功");
+            // 处理业务 。。。
+            System.out.println(Thread.currentThread() + ":处理业务 。。。");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(Thread.currentThread() + ":处理业务完成");
+        } finally {
+            System.out.println(Thread.currentThread() + ":释放锁");
+            redisDistributedLock.unlock(key);
+        }
+
+        return Result.success();
+    }
+
+    @ApiOperationSupport(order = 1, author = "wing")
+    @Operation(summary = "redis锁测试[阻塞式获取锁]")
+    @GetMapping("/redisRock1")
+    public Result isRedisRock1() {
+
+        String key = "redis:rock:1";
+        redisDistributedLock.lock(key);
+        try {
+            System.out.println(Thread.currentThread() + ":获取锁成功");
+            // 处理业务 。。。
+            System.out.println(Thread.currentThread() + ":处理业务 。。。");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(Thread.currentThread() + ":处理业务完成");
+        } finally {
+            System.out.println(Thread.currentThread() + ":释放锁");
+            redisDistributedLock.unlock(key);
+        }
+
+        return Result.success();
+    }
+
+    @ApiOperationSupport(order = 1, author = "wing")
+    @Operation(summary = "redis锁测试[非阻塞式获取锁，带有超时时间]")
+    @GetMapping("/redisRock2")
+    public Result isRedisRock2() {
+
+        String key = "redis:rock:1";
+        LogUtil.info(getClass(),"{}:尝试获取锁", Thread.currentThread());
+        boolean flag = redisDistributedLock.tryLock(key, 20);
+        if (!flag) {
+            LogUtil.info(getClass(),"{}:获取锁失败", Thread.currentThread());
+            return Result.error(null);
+        }
+        try {
+            LogUtil.info(getClass(),"{}:获取锁成功", Thread.currentThread());
+            // 处理业务 。。。
+            LogUtil.info(getClass(),"{}:处理业务 。。。", Thread.currentThread());
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            LogUtil.info(getClass(),"{}:处理业务完成!", Thread.currentThread());
+        } finally {
+            LogUtil.info(getClass(),"{}:释放锁", Thread.currentThread());
+            redisDistributedLock.unlock(key);
+        }
 
         return Result.success();
     }

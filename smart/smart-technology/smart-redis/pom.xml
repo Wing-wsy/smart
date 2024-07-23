@@ -13,6 +13,12 @@
     <name>smart-redis</name>
     <description>smart-redis</description>
     <dependencies>
+        <!-- 技术框架核心组件依赖 -->
+        <dependency>
+            <groupId>com.yj.tech</groupId>
+            <artifactId>smart-common</artifactId>
+            <version>${version}</version>
+        </dependency>
         <!-- redis依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,6 +40,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-integration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-redis</artifactId>
         </dependency>
 
     </dependencies>
