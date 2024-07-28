@@ -16,7 +16,7 @@ import com.yj.tech.common.entity.UserRole;
 import com.yj.tech.common.service.IUserPermService;
 import com.yj.tech.common.service.IUserRoleService;
 import com.yj.tech.common.service.IUserService;
-import com.yj.tech.common.util.DateUtils;
+import com.yj.tech.common.util.date.DateUtils;
 import com.yj.tech.common.web.restful.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

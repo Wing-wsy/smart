@@ -54,6 +54,9 @@ public class Constant {
             "/xxl-job/remove",
             "/xxl-job/update",
 
+            // mq
+            "/test/testMqProperties",
+
     };
 
     public static List<String> annosList = Arrays.asList(annos);

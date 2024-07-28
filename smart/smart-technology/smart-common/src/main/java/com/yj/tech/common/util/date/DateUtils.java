@@ -1,4 +1,4 @@
-package com.yj.tech.common.util;
+package com.yj.tech.common.util.date;
 
 import cn.hutool.core.date.DateUtil;
 
@@ -72,11 +72,6 @@ public class DateUtils {
         return dates;
     }
 
-    public static void main(String[] args) {
-        System.out.println(getBeginEnd(1)[0]);
-        System.out.println(getBeginEnd(1)[1]);
-        System.out.println(new Random().nextInt(10));
-    }
 
     public static String format(Date date) {
         return DateUtil.format(date,"yyyy-MM-dd HH:mm:ss");

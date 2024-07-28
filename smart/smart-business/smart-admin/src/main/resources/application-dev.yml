@@ -8,6 +8,7 @@ spring:
     username: root
     password: P@ssw0rd123!
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis 配置
   redis:
     host: 127.0.0.1
     port: 6379
@@ -27,7 +28,7 @@ vmPlace: generator
 serverPath: http://localhost:8001/
 upload: g:/aServer
 
-# xxl
+# xxl-job
 xxl:
   job:
     admin:
@@ -45,3 +46,13 @@ xxl:
       ### xxl-job executor log-retention-days
       logretentiondays: 30
 
+# rabbitmq
+#tech:
+#  message:
+#    rabbitmq:
+#      host: 47.76.68.216
+#      port: 5672
+#      username: ems
+#      password: 123
+#      vhost: /ems
+#      connectionName: smart-admin

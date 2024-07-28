@@ -11,6 +11,7 @@
     <modules>
         <module>smart-common</module>
         <module>smart-redis</module>
+        <module>smart-mq-rabbitmq</module>
         <module>xxl-job-core</module>
     </modules>
 

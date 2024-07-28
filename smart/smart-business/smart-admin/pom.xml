@@ -34,6 +34,13 @@
             <version>${version}</version>
         </dependency>
 
+        <!-- rabbitmq -->
+        <dependency>
+            <groupId>com.yj.tech</groupId>
+            <artifactId>smart-mq-rabbitmq</artifactId>
+            <version>${version}</version>
+        </dependency>
+
         <!-- AOP切面 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

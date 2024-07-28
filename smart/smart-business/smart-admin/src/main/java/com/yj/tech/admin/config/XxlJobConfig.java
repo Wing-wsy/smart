@@ -10,11 +10,12 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author xuxueli 2017-04-28
  */
-@Configuration
+// 需要使用时打开注释
+//@Configuration
 public class XxlJobConfig {
 //    private Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
 
-    @Value("${xxl.job.admin.addresses}")
+    @Value("x${xxl.job.admin.addresses}")
     private String adminAddresses;
 
     @Value("${xxl.job.accessToken}")

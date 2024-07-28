@@ -17,8 +17,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -39,6 +37,7 @@ public class TestController {
 
     @Resource
     private RedisService redisService;
+
 
     @ApiOperationSupport(order = 1, author = "wing")
     @Operation(summary = "打印日志")
@@ -175,6 +174,13 @@ public class TestController {
         // 对象转成
         String jsonString = JsonUtil.getJsonString(menu);
         System.out.println(jsonString);
+        return Result.success();
+    }
+
+    @GetMapping("/testMqProperties")
+    public Result testMqProperties() {
+
+//        System.out.println(messageMQProperties);
         return Result.success();
     }
 
