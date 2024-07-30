@@ -13,7 +13,6 @@ import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
-
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -21,6 +20,9 @@ import java.nio.charset.StandardCharsets;
  */
 public abstract class AbstractConsumer<T, R> extends MessageListenerAdapter {
 
+    /**
+     * 重试次数（如果这个值设置为 int 最大值，那么不再支持重试功能，即使使用了@RabbitMqRetry 配置了重试次数也不再生效）
+     */
     private final int retryNumber = 1;
 
     @Override
@@ -67,6 +69,7 @@ public abstract class AbstractConsumer<T, R> extends MessageListenerAdapter {
         Integer lock = messageProperties.getHeader("retryNumber");
         Integer actualLock = ValidateUtils.isEmpty(lock) ? 1 : lock + 1;
         LogUtil.error(getClass(), "rabbitMQ 失败记录:消费者correlationId为:{},deliveryTag为:{},失败次数为:{}", correlationId, deliveryTag, actualLock);
+        // @RabbitMqRetry 配置的重试次数
         int retryNumber = getRetryNumber();
         if (retryNumber <= this.retryNumber || actualLock >= retryNumber) {
             if (retryNumber <= this.retryNumber) {
@@ -82,7 +85,7 @@ public abstract class AbstractConsumer<T, R> extends MessageListenerAdapter {
     }
 
     /**
-     * 获取重试次数，默认为2
+     * 获取重试次数，默认为1
      */
     public int getRetryNumber() {
         RabbitMqRetry rabbitMqRetry = getClass().getAnnotation(RabbitMqRetry.class);
@@ -110,13 +113,14 @@ public abstract class AbstractConsumer<T, R> extends MessageListenerAdapter {
      * @param e       异常
      */
     public void saveFailMessage(Message message, Throwable e) {
-
+        // TODO 根据业务进行判断
     }
 
     /**
      * 判断是否重复消费
      */
     public boolean checkMessageKey(MessageProperties messageProperties,RabbitMqModel rabbitMqModel) {
+        // TODO 根据业务进行判断
         return false;
     }
 

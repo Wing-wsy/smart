@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 public @interface RabbitMqRetry {
 
     /**
-     * 重试次数
+     * 重试次数（包含第一次，全部的次数）
      */
     int retryNumber() default 2;
 
@@ -23,12 +23,14 @@ public @interface RabbitMqRetry {
     long initialInterval() default 20000L;
 
     /**
-     * 最大重试间隔为100秒
+     * 最大重试间隔为100秒【注意这个限制】
      */
     long maxInterval() default 100000L;
 
     /**
      * 重试间隔乘法策略
+     * 比如 multiplier = 2，initialInterval = 10000，maxInterval = 100000
+     * 那么第一次失败后 10s、20s、40s、80s、100s、100s...100s 都会进行重试（后面最大的间隔不会超过maxInterval的值）
      */
     double multiplier() default 5;
 }

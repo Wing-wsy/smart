@@ -1,11 +1,15 @@
 package com.yj.tech.rabbitmq.service;
 
+import com.google.common.base.Splitter;
+import com.yj.tech.common.util.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.entity.InitRabbitBinding;
 import org.springframework.amqp.core.AbstractExchange;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+
+import java.util.List;
 
 public abstract class AbstractMQService {
 
@@ -20,10 +24,21 @@ public abstract class AbstractMQService {
         // 绑定交换机
         AbstractExchange exchange = initExchange(initRabbitBinding.getExchange(), rabbitMq);
         admin.declareExchange(exchange);
-        // 绑定
-        admin.declareBinding(this.initBinding(queue, exchange, initRabbitBinding.getRoutingKey(), rabbitMq));
+        // 绑定（兼容direct使用路由模式，多个路由使用 , 隔开，如：“info,error”）
+        String routingKey = initRabbitBinding.getRoutingKey();
+        if (ValidateUtils.isNotEmpty(routingKey)) {
+            Splitter splitter = Splitter.on(",");
+            // 使用工具类按指定字符拆分
+            List<String> strings = splitter.splitToList(routingKey);
+            for (String routkey : strings) {
+                admin.declareBinding(this.initBinding(queue, exchange, routkey, rabbitMq));
+            }
+        } else {
+            admin.declareBinding(this.initBinding(queue, exchange, routingKey, rabbitMq));
+        }
         return queue;
     }
+
 
     /**
      * 初始化交换机

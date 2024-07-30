@@ -10,7 +10,7 @@ import org.springframework.amqp.rabbit.connection.CorrelationData;
 public abstract class AbstractRabbitCallBack {
 
     /**
-     * 保存mq消费成功或失败后方法
+     * 发送消息到mq，无论是否成功发送到达mq队列都执行该方法
      */
     public abstract void saveRabbitCallBack(CorrelationData correlationData, boolean ack, String cause);
 

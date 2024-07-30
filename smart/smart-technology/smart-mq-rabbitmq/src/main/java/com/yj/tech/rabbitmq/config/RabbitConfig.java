@@ -24,8 +24,7 @@ import java.util.Map;
 
 @Configuration
 @EnableConfigurationProperties(value = {RabbitProperties.class})
-//@Import(value = {RabbitUtils.class, DelayedMQService.class, DirectMQService.class, FanoutMQService.class, TopicMQService.class, HeadersMQService.class})
-@Import(value = {RabbitUtils.class, DirectMQService.class})
+@Import(value = {RabbitUtils.class, DelayedMQService.class, DirectMQService.class, FanoutMQService.class, TopicMQService.class, HeadersMQService.class})
 public class RabbitConfig {
 
     public RabbitConfig(ApplicationContext applicationContext) {

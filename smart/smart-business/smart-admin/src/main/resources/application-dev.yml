@@ -19,6 +19,17 @@ spring:
         max-idle: 8
         min-idle: 0
         max-wait: 100ms
+  # rabbitmq 配置
+  rabbitmq:
+    host: 47.76.68.216
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /smart
+    # 开启 ConfirmCallback
+    publisher-confirm-type: correlated
+    # 开启 ReturnsCallback
+    publisher-returns: true
 
 #生成的代码存放目录:resources下
 filePlace: tmp

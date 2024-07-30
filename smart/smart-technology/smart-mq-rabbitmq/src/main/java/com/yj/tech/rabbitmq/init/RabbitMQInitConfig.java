@@ -7,8 +7,7 @@ import com.yj.tech.common.util.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.annotation.RabbitMqRetry;
 import com.yj.tech.rabbitmq.consumer.AbstractConsumer;
-import com.yj.tech.rabbitmq.service.AbstractMQService;
-import com.yj.tech.rabbitmq.service.DirectMQService;
+import com.yj.tech.rabbitmq.service.*;
 import com.yj.tech.rabbitmq.util.RabbitUtils;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.config.RetryInterceptorBuilder;
@@ -29,7 +28,6 @@ import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.interceptor.RetryOperationsInterceptor;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Configuration
 @EnableConfigurationProperties(value = {RabbitProperties.class})
-//@Import(value = {RabbitUtils.class, DelayedMQService.class, DirectMQService.class, FanoutMQService.class, TopicMQService.class, HeadersMQService.class})
-@Import(value = {RabbitUtils.class,  DirectMQService.class})
+@Import(value = {RabbitUtils.class, DelayedMQService.class, DirectMQService.class, FanoutMQService.class, TopicMQService.class, HeadersMQService.class})
 public class RabbitMQInitConfig implements CommandLineRunner {
 
     private RabbitMq rabbitMq;

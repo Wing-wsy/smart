@@ -2,6 +2,7 @@ package com.yj.tech.admin.controller.test;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.yj.tech.admin.controller.test.mq.producer.TestMqDirectProducer;
 import com.yj.tech.common.entity.Menu;
 import com.yj.tech.common.util.JsonUtil;
 import com.yj.tech.common.util.LogUtil;
@@ -37,6 +38,9 @@ public class TestController {
 
     @Resource
     private RedisService redisService;
+
+    @Autowired
+    private TestMqDirectProducer testMqDirectProducer;
 
 
     @ApiOperationSupport(order = 1, author = "wing")
@@ -180,7 +184,33 @@ public class TestController {
     @GetMapping("/testMqProperties")
     public Result testMqProperties() {
 
-//        System.out.println(messageMQProperties);
+        try {
+            /** 1）direct */
+            testMqDirectProducer.sendMsg("testExchangeDirectDefault", "", "test msg1... ");
+
+            /** 2）work */
+//            for (int i = 0; i < 10; i++) {
+//                testMqDirectProducer.sendMsg("testExchangeWork1", "", "test msg2... " + i);
+//            }
+            /** 3）fanout */
+//            testMqDirectProducer.sendMsg("testExchangeFanout1", "", "test msg3... ");
+            /*for (int i = 1; i < 3; i++) {
+                testMqDirectProducer.sendMsg("testExchangeFanout1", "", "test msg3... " + i);
+            }*/
+            /** 4）routing-direct */
+//            testMqDirectProducer.sendMsg("testExchangeDirect1", "debug", "[debug]test msg5... ");
+//            testMqDirectProducer.sendMsg("testExchangeDirect1", "warn", "[track]test msg5... ");
+//            testMqDirectProducer.sendMsg("testExchangeDirect1", "info", "[info]test msg5... ");
+//            testMqDirectProducer.sendMsg("testExchangeDirect1", "error", "[error]test msg5... ");
+            /** 5）routing-topic */
+//            testMqDirectProducer.sendMsg("testExchangeTopic1", "user.ccc", "[user.ccc]test msg4... ");
+//            testMqDirectProducer.sendMsg("testExchangeTopic1", "user.save", "[user.save]test msg4... ");
+//            testMqDirectProducer.sendMsg("testExchangeTopic1", "user.save.order", "[user.save.order]test msg4... ");
+//            testMqDirectProducer.sendMsg("testExchangeTopic1", "aaa.bbb", "[aaa.bbb]test msg4... ");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return Result.success();
     }
 
