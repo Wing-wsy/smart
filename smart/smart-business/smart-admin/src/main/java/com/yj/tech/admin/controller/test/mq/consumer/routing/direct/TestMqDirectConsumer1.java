@@ -11,7 +11,7 @@ import static org.springframework.amqp.core.ExchangeTypes.TOPIC;
 /**
  *  direct模式: 直连模式
  */
-@RabbitMq(exchangeTypes = DIRECT, exchange = "testExchangeDirect1", queues = "testQueueDirect1", routingKey = "info,error")
+//@RabbitMq(exchangeTypes = DIRECT, exchange = "testExchangeDirect1", queues = "testQueueDirect1", routingKey = "info,error")
 public class TestMqDirectConsumer1 extends AbstractConsumer<String, String> {
 
     @Override

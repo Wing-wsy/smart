@@ -186,7 +186,11 @@ public class TestController {
 
         try {
             /** 1）direct */
-            testMqDirectProducer.sendMsg("testExchangeDirectDefault", "", "test msg1... ");
+            // 1）测试发送延迟消息
+//            testMqDirectProducer.sendMsg("dlx_testExchangeTTL1", "dlx_testQueueTTL1_routing_key", "test msg1 dlx... ");
+            // 2）测试发送到交换机，交换机找不到对应路由 testQueueTTL1_routing_key1 ，进而触发 RabbitCallBack 类的 returnedMessage 方法
+            testMqDirectProducer.sendExpiration("testExchangeTTL1", "testQueueTTL1_routing_key1", 20000, "test msg1 dlx... ");
+
 
             /** 2）work */
 //            for (int i = 0; i < 10; i++) {

@@ -142,7 +142,7 @@ public class RabbitUtils implements SendService<RabbitMqModel> {
      *  发送消息方法
      *  baseMq：消息实体
      *  expiration：延迟消息时间 或 过期时间（isDelayed区分）
-     *  isDelayed：是否延迟消息 true是 false否
+     *  isDelayed：是否延迟消息(需要下载延迟插件) true是 false否
      */
     private boolean convertAndSend(BaseMq baseMq, long expiration, boolean isDelayed) {
         RabbitMqModel rabbitMQModel = (RabbitMqModel) baseMq;
@@ -163,6 +163,7 @@ public class RabbitUtils implements SendService<RabbitMqModel> {
                 }
             }
             if (isDelayed) {
+                // 延迟插件的配置
                 msg.getMessageProperties().setHeader("x-delay", expiration);
             } else {
                 msg.getMessageProperties().setExpiration(String.valueOf(expiration));

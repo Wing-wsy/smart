@@ -9,7 +9,7 @@ import org.springframework.amqp.core.Message;
  * @author wing
  * @create 2024/7/29
  */
-@RabbitMq(queues = "testQueueWork1",exchange = "testExchangeWork1")
+//@RabbitMq(queues = "testQueueWork1",exchange = "testExchangeWork1")
 public class TestMqWorkConsumer2 extends AbstractConsumer<String, String> {
 
     @Override

@@ -1,5 +1,6 @@
-package com.yj.tech.admin.controller.test.mq.consumer.direct;
+package com.yj.tech.admin.controller.test.mq.consumer.dlx;
 
+import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.consumer.AbstractConsumer;
 import com.yj.tech.rabbitmq.entity.RabbitMqModel;
 import org.springframework.amqp.core.Message;
@@ -13,6 +14,7 @@ import java.util.Date;
  * @create 2024/7/30
  */
 @Component
+@RabbitMq(routingKey = "dlx_testQueueTTL1_routing_key", queues = "dlx_testQueueTTL1",exchange = "dlx_testExchangeTTL1")
 public class TestDlxMqDirect extends AbstractConsumer<String, String> {
     @Override
     public String handleMessage(String body) throws Exception {

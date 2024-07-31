@@ -1,6 +1,5 @@
-package com.yj.tech.admin.controller.test.mq.consumer.direct;
+package com.yj.tech.admin.controller.test.mq.consumer.dlx;
 
-import com.yj.tech.admin.controller.test.mq.consumer.dlx.TestDlxMqDirect;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.annotation.RabbitMqRetry;
 import com.yj.tech.rabbitmq.consumer.AbstractConsumer;
@@ -13,10 +12,10 @@ import java.util.Date;
 /**
  *  直连模式: 一个生产者对应一个消费者
  */
-//@RabbitMq(queues = "testQueueDirectDefault",exchange = "testExchangeDirectDefault")
+//@RabbitMq(routingKey = "testQueueTTL1_routing_key", queues = "testQueueTTL1",exchange = "testExchangeTTL1", dlxClazz = TestDlxMqDirect.class)
 //// 设置重试次数
 //@RabbitMqRetry(retryNumber = 5, initialInterval = 1000, multiplier = 2)
-public class TestMqDirectConsumer extends AbstractConsumer<String, String> {
+public class TestMqDlxConsumer extends AbstractConsumer<String, String> {
 
     @Override
     public String handleMessage(String body) throws Exception {

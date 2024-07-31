@@ -10,5 +10,7 @@ public interface BaseRabbitMqCode {
 
   String DLX_PREFIX = "dlx_";
 
+  String DLX_ROUTING_DEFAULT = "dlx_routingkey_default";
+
   String QUEUE_MODE = "x-queue-mode";
 }

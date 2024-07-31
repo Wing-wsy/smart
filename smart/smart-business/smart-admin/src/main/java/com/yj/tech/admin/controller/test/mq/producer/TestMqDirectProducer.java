@@ -27,4 +27,17 @@ public class TestMqDirectProducer {
         rabbitUtils.send(rabbitMqModel);
 
     }
+
+    // 有过期时间
+    public void sendExpiration(String exchange, String routingKey, long expiration, Object msg) throws Exception {
+        if (ValidateUtils.isEmpty(exchange)) {
+            return;
+        }
+        RabbitMqModel rabbitMqModel = new RabbitMqModel<String>();
+        rabbitMqModel.setExchange(exchange);
+        rabbitMqModel.setRoutingKey(ValidateUtils.isEmpty(routingKey) ? "" : routingKey);
+        rabbitMqModel.setBody(msg);
+        rabbitUtils.sendExpiration(rabbitMqModel, expiration);
+
+    }
 }

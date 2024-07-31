@@ -13,7 +13,7 @@ import static org.springframework.amqp.core.ExchangeTypes.FANOUT;
  *
  *  注意：交换机名称都要一样 testExchangeFanout1，队列名称不一样： testQueueFanout1
  */
-@RabbitMq(exchangeTypes = FANOUT, exchange = "testExchangeFanout1", queues = "testQueueFanout1", consumersPerQueue = 2)
+//@RabbitMq(exchangeTypes = FANOUT, exchange = "testExchangeFanout1", queues = "testQueueFanout1", consumersPerQueue = 2)
 public class TestMqFanoutConsumer1 extends AbstractConsumer<String, String> {
 
     @Override

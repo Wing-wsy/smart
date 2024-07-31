@@ -92,6 +92,8 @@ public class InitRabbitBinding implements Serializable {
 
         if (ValidateUtils.isNotEmpty(rabbitMq.routingKey())) {
             args.put(BaseRabbitMqCode.DLX_ROUTING_KEY, BaseRabbitMqCode.DLX_PREFIX + rabbitMq.routingKey());
+        } else {
+            args.put(BaseRabbitMqCode.DLX_ROUTING_KEY, BaseRabbitMqCode.DLX_ROUTING_DEFAULT);
         }
         /**
          * x-message-ttl 在创建队列时设置的消息TTL，表示消息在队列中最多能存活多久（ms）；

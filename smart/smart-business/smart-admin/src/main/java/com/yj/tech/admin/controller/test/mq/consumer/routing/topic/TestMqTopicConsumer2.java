@@ -10,7 +10,7 @@ import static org.springframework.amqp.core.ExchangeTypes.TOPIC;
 /**
  *  topic模式: 订阅模式
  */
-@RabbitMq(exchangeTypes = TOPIC, exchange = "testExchangeTopic1", queues = "testQueueTopic2", routingKey = "user.*")
+//@RabbitMq(exchangeTypes = TOPIC, exchange = "testExchangeTopic1", queues = "testQueueTopic2", routingKey = "user.*")
 public class TestMqTopicConsumer2 extends AbstractConsumer<String, String> {
 
     @Override

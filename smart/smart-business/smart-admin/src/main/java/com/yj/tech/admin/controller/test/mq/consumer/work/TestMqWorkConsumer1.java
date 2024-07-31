@@ -8,7 +8,7 @@ import org.springframework.amqp.core.Message;
 /**
  *  工作模式: 一个生产者对应多个消费者（多个消费者监听同一个队列，一起消费，全部消费者消费消息总数=生产者生产消息数量）
  */
-@RabbitMq(queues = "testQueueWork1",exchange = "testExchangeWork1")
+//@RabbitMq(queues = "testQueueWork1",exchange = "testExchangeWork1")
 public class TestMqWorkConsumer1 extends AbstractConsumer<String, String> {
 
     @Override
