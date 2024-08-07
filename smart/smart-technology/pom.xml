@@ -10,8 +10,11 @@
     <description>smart-technology</description>
     <modules>
         <module>smart-common</module>
+        <module>smart-utils</module>
         <module>smart-redis</module>
+        <module>smart-constant</module>
         <module>smart-mq-rabbitmq</module>
+        <module>smart-file</module>
         <module>xxl-job-core</module>
     </modules>
 
@@ -21,7 +24,19 @@
         <java.target>17</java.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.boot.version>3.1.2</spring.boot.version>
         <spring-boot.version>3.1.2</spring-boot.version>
+        <spring.context.version>5.3.7</spring.context.version>
+        <aws.s3.version>1.12.687</aws.s3.version>
+        <bos.version>0.10.240</bos.version>
+        <obs.version>3.22.3</obs.version>
+        <oss.version>3.15.1</oss.version>
+        <cos.version>5.6.97</cos.version>
+        <xmpcore.version>6.1.11</xmpcore.version>
+        <metadata.version>2.19.0</metadata.version>
+        <minio.version>8.2.1</minio.version>
+
+
     </properties>
 
     <dependencyManagement>
@@ -29,24 +44,82 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.context.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${aws.s3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huaweicloud</groupId>
+                <artifactId>esdk-obs-java-bundle</artifactId>
+                <version>${obs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baidubce</groupId>
+                <artifactId>bce-java-sdk</artifactId>
+                <version>${bos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${oss.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.qcloud</groupId>
+                <artifactId>cos_api</artifactId>
+                <version>${cos.version}</version>
+            </dependency>
+
+            <!--解析图片exif 开始-->
+            <!-- 去除图片Exif -->
+            <dependency>
+                <groupId>com.drewnoakes</groupId>
+                <artifactId>metadata-extractor</artifactId>
+                <version>${metadata.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.adobe.xmp</groupId>
+                <artifactId>xmpcore</artifactId>
+                <version>${xmpcore.version}</version>
+            </dependency>
+            <!--解析图片exif 结束-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+            <!--minio-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
