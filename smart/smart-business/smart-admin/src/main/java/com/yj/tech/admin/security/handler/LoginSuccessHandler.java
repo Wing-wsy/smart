@@ -3,17 +3,17 @@ package com.yj.tech.admin.security.handler;
 import com.yj.tech.admin.util.JwtUtils;
 import com.yj.tech.common.entity.User;
 import com.yj.tech.common.entity.Role;
-import com.yj.tech.common.util.date.DateUtils;
 import com.yj.tech.common.web.restful.Result;
+import com.yj.tech.utils.logger.LogUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.yj.tech.utils.date.DateUtils;
 
 /**
  *  登录成功处理器

@@ -1,6 +1,6 @@
 package com.yj.tech.admin.controller.test.mq.producer;
 
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.entity.RabbitMqModel;
 import com.yj.tech.rabbitmq.util.RabbitUtils;
 import org.springframework.beans.factory.annotation.Autowired;

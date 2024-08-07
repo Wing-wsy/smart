@@ -10,9 +10,9 @@
     <description>smart-business</description>
     <modules>
         <module>smart-admin</module>
+        <module>smart-file-admin</module>
         <module>xxl-job-admin</module>
     </modules>
-    <!--test-->
 
     <properties>
         <java.version>17</java.version>
@@ -76,11 +76,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-<!--                <configuration>-->
-<!--                    <source>${java.source}</source>-->
-<!--                    <target>${java.target}</target>-->
-<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
-<!--                </configuration>-->
+                <!--                <configuration>-->
+                <!--                    <source>${java.source}</source>-->
+                <!--                    <target>${java.target}</target>-->
+                <!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
+                <!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

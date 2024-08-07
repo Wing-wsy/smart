@@ -57,6 +57,8 @@ xxl:
       ### xxl-job executor log-retention-days
       logretentiondays: 30
 
+# 文件服务
+
 # rabbitmq
 #tech:
 #  message:
