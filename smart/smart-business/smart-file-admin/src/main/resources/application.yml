@@ -1,0 +1,12 @@
+server:
+  port: 9999
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    #    url: jdbc:mysql://47.76.68.216:3306/redpig_master?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://47.76.68.216:3306/smart?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: P@ssw0rd123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
