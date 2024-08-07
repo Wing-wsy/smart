@@ -1,6 +1,5 @@
 package com.yj.tech.redis.config;
 
-import com.yj.tech.common.constant.basic.Strings;
 import com.yj.tech.redis.constant.RedisConstants;
 import com.yj.tech.redis.lock.RedisDistributedLock;
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.integration.redis.util.RedisLockRegistry;
+import com.yj.tech.constant.basic.Strings;
 
 /**
  * 扩展Redis分布式锁服务配置支持

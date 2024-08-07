@@ -1,6 +1,7 @@
 package com.yj.tech.redis.lock;
 
 import com.yj.tech.redis.constant.RedisConstants;
+import com.yj.tech.utils.logger.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.redis.util.RedisLockRegistry;
 
