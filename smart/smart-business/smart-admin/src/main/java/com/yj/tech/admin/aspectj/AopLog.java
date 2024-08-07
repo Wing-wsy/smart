@@ -2,7 +2,6 @@ package com.yj.tech.admin.aspectj;
 
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.json.JSONUtil;
-import com.yj.tech.common.util.LogUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

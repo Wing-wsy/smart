@@ -1,7 +1,7 @@
 package com.yj.tech.rabbitmq.service;
 
 import com.google.common.base.Splitter;
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.entity.InitRabbitBinding;
 import org.springframework.amqp.core.AbstractExchange;

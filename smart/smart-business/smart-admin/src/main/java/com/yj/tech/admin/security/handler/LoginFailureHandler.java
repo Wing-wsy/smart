@@ -1,11 +1,9 @@
 package com.yj.tech.admin.security.handler;
 
-import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.web.restful.Result;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.CredentialsExpiredException;

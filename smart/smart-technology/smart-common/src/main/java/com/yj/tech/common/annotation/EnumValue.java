@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 public @interface EnumValue {
     /**
      * 值
-     * 
+     *
      * @return 值
      */
     String value();

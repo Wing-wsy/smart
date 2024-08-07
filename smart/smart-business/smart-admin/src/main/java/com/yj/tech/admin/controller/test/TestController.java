@@ -5,7 +5,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.yj.tech.admin.controller.test.mq.producer.TestMqDirectProducer;
 import com.yj.tech.common.entity.Menu;
 import com.yj.tech.common.util.JsonUtil;
-import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.web.restful.Result;
 import com.yj.tech.redis.lock.RedisDistributedLock;
 import com.yj.tech.redis.service.RedisService;

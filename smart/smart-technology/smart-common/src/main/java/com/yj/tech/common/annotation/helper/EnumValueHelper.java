@@ -1,9 +1,8 @@
 package com.yj.tech.common.annotation.helper;
 
 import com.yj.tech.common.annotation.EnumValue;
-import com.yj.tech.common.util.clazz.ClassUtil;
-
 import java.lang.reflect.Field;
+import com.yj.tech.utils.clazz.ClassUtil;
 
 /**
  * 算法：获取枚举值对应的枚举常量

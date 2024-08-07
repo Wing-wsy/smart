@@ -1,6 +1,6 @@
 package com.yj.tech.common.annotation;
 
-import com.yj.tech.common.constant.basic.Strings;
+import com.yj.tech.constant.basic.Strings;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

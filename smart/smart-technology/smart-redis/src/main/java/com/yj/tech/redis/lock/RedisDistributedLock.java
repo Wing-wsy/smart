@@ -1,11 +1,8 @@
 package com.yj.tech.redis.lock;
 
-import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.redis.constant.RedisConstants;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.redis.util.RedisLockRegistry;
-import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

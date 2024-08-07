@@ -1,8 +1,8 @@
 package com.yj.tech.rabbitmq.entity;
 
 import com.yj.tech.common.util.spring.SpringUtil;
-import com.yj.tech.rabbitmq.code.BaseRabbitMqCode;
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.verification.ValidateUtils;
+import com.yj.tech.constant.code.BaseRabbitMqCode;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import java.io.Serializable;
 import java.util.HashMap;

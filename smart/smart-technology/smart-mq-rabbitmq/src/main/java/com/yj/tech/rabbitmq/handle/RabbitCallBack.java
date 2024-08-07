@@ -1,11 +1,11 @@
 package com.yj.tech.rabbitmq.handle;
 
-import com.yj.tech.common.util.LogUtil;
+import com.yj.tech.utils.logger.LogUtil;
 import org.springframework.amqp.core.ReturnedMessage;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ConfirmCallback;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ReturnsCallback;
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.verification.ValidateUtils;
 import java.util.Collection;
 
 /**

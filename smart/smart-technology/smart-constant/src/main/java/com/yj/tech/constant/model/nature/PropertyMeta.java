@@ -1,4 +1,4 @@
-package com.yj.tech.constant.nature;
+package com.yj.tech.constant.model.nature;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;

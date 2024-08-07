@@ -1,13 +1,13 @@
 package com.yj.tech.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
-import com.yj.tech.common.exception.BaseException;
-import com.yj.tech.common.util.LogUtil;
 import com.yj.tech.common.util.json.JackJsonUtils;
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.exception.BaseException;
+import com.yj.tech.utils.logger.LogUtil;
+import com.yj.tech.utils.verification.ValidateUtils;
+import com.yj.tech.constant.code.MqErrorCode;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.annotation.RabbitMqRetry;
-import com.yj.tech.rabbitmq.code.MqErrorCode;
 import com.yj.tech.rabbitmq.entity.RabbitMqModel;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
