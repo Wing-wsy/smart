@@ -36,6 +36,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.yj.tech</groupId>
+            <artifactId>smart-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- MySql驱动包 -->
         <dependency>
             <groupId>com.mysql</groupId>
