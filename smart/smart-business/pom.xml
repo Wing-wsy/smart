@@ -12,6 +12,7 @@
         <module>smart-admin</module>
         <module>xxl-job-admin</module>
     </modules>
+    <!--test-->
 
     <properties>
         <java.version>17</java.version>
