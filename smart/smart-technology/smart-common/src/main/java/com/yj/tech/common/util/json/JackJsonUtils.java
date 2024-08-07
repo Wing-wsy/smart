@@ -4,17 +4,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import com.yj.tech.common.util.logger.LoggerUtils;
 import com.yj.tech.common.util.spring.SpringUtil;
-import com.yj.tech.common.util.verification.ValidateUtils;
+import com.yj.tech.utils.verification.ValidateUtils;
 import org.slf4j.Logger;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.yj.tech.utils.logger.LogUtil;
 public class JackJsonUtils {
 
-    private static final Logger logger = LoggerUtils.logger(JackJsonUtils.class);
+    private static final Logger logger = LogUtil.getLogger(JackJsonUtils.class);
 
     private static final ObjectMapper mapper = SpringUtil.getBean(ObjectMapper.class);
 
