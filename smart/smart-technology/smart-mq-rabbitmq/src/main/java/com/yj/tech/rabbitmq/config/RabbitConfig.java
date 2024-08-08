@@ -1,7 +1,7 @@
 package com.yj.tech.rabbitmq.config;
 
-import com.yj.tech.common.util.spring.SpringUtil;
 import com.yj.tech.utils.logger.LogUtil;
+import com.yj.tech.utils.spring.SpringUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.handle.AbstractRabbitCallBack;
 import com.yj.tech.rabbitmq.handle.RabbitCallBack;

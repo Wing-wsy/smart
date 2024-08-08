@@ -1,6 +1,6 @@
 package com.yj.tech.rabbitmq.entity;
 
-import com.yj.tech.common.util.spring.SpringUtil;
+import com.yj.tech.utils.spring.SpringUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.constant.code.BaseRabbitMqCode;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;

@@ -1,8 +1,8 @@
 package com.yj.tech.rabbitmq.consumer;
 
 import com.rabbitmq.client.Channel;
-import com.yj.tech.common.util.json.JackJsonUtils;
 import com.yj.tech.utils.exception.BaseException;
+import com.yj.tech.utils.json.JackJsonUtils;
 import com.yj.tech.utils.logger.LogUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.constant.code.MqErrorCode;

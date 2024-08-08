@@ -1,8 +1,8 @@
 package com.yj.tech.rabbitmq.init;
 
-import com.yj.tech.common.util.spring.SpringUtil;
 import com.yj.tech.constant.code.BaseCode;
 import com.yj.tech.utils.logger.LogUtil;
+import com.yj.tech.utils.spring.SpringUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.annotation.RabbitMqRetry;

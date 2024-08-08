@@ -101,11 +101,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-
         <!-- IO处理工具类库 -->
         <dependency>
             <groupId>commons-io</groupId>

@@ -1,16 +1,18 @@
-package com.yj.tech.common.util.json;
+package com.yj.tech.utils.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import com.yj.tech.common.util.spring.SpringUtil;
+import com.yj.tech.utils.logger.LogUtil;
+import com.yj.tech.utils.spring.SpringUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import org.slf4j.Logger;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import com.yj.tech.utils.logger.LogUtil;
+
 public class JackJsonUtils {
 
     private static final Logger logger = LogUtil.getLogger(JackJsonUtils.class);

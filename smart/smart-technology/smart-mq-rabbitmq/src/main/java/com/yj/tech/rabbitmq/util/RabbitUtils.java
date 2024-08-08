@@ -2,10 +2,10 @@ package com.yj.tech.rabbitmq.util;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.GetResponse;
-import com.yj.tech.common.util.spring.SpringUtil;
 import com.yj.tech.constant.code.BaseExceptionCode;
 import com.yj.tech.utils.exception.BaseException;
 import com.yj.tech.utils.logger.LogUtil;
+import com.yj.tech.utils.spring.SpringUtil;
 import com.yj.tech.utils.verification.ValidateUtils;
 import com.yj.tech.rabbitmq.annotation.RabbitMq;
 import com.yj.tech.rabbitmq.consumer.AbstractConsumer;

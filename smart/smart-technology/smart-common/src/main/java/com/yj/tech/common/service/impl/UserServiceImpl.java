@@ -6,7 +6,7 @@ import com.yj.tech.common.entity.User;
 import com.yj.tech.common.entity.Role;
 import com.yj.tech.common.mapper.UserMapper;
 import com.yj.tech.common.service.IUserService;
-import com.yj.tech.common.util.Asserts;
+import com.yj.tech.utils.asserts.Asserts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

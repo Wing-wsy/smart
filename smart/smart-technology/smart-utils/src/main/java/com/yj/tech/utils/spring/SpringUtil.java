@@ -1,4 +1,4 @@
-package com.yj.tech.common.util.spring;
+package com.yj.tech.utils.spring;
 
 import com.yj.tech.utils.verification.ValidateUtils;
 import org.springframework.beans.BeansException;
