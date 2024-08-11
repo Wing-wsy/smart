@@ -10,9 +10,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   # redis 配置
   redis:
+    # 本地
     host: 127.0.0.1
     port: 6379
     password:
+    # 服务器
+#    host: 47.76.68.216
+#    port: 6379
+#    password: 123456abc
     lettuce:
       pool:
         max-active: 8
@@ -30,6 +35,25 @@ spring:
     publisher-confirm-type: correlated
     # 开启 ReturnsCallback
     publisher-returns: true
+  # kafka 配置
+  kafka:
+    bootstrap-servers: 47.76.68.216:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+      retries: 0
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # 是否自动提交offset
+      enable-auto-commit: true
+      auto-commit-interval: 1S
+      auto-offset-reset: earliest
+      # 默认的消费组id
+      group-id: default-group
+#    listener:
+#      ack-mode: manual
 
 #生成的代码存放目录:resources下
 filePlace: tmp
@@ -58,14 +82,3 @@ xxl:
       logretentiondays: 30
 
 # 文件服务
-
-# rabbitmq
-#tech:
-#  message:
-#    rabbitmq:
-#      host: 47.76.68.216
-#      port: 5672
-#      username: ems
-#      password: 123
-#      vhost: /ems
-#      connectionName: smart-admin

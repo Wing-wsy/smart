@@ -1,0 +1,4 @@
+## Auto Configure
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#    com.yj.tech.rabbitmq.config.RabbitConfig,\
+#    com.yj.tech.rabbitmq.init.RabbitMQInitConfig

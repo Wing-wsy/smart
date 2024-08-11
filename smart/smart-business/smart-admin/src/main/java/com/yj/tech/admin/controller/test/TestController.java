@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,9 @@ public class TestController {
 
     @Autowired
     private TestMqDirectProducer testMqDirectProducer;
+
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
 
 
     @ApiOperationSupport(order = 1, author = "wing")
@@ -181,8 +185,8 @@ public class TestController {
         return Result.success();
     }
 
-    @GetMapping("/testMqProperties")
-    public Result testMqProperties() {
+    @GetMapping("/testRabbitMqProperties")
+    public Result testRabbitMqProperties() {
 
         try {
             /** 1）direct */
@@ -211,6 +215,20 @@ public class TestController {
 //            testMqDirectProducer.sendMsg("testExchangeTopic1", "user.save", "[user.save]test msg4... ");
 //            testMqDirectProducer.sendMsg("testExchangeTopic1", "user.save.order", "[user.save.order]test msg4... ");
 //            testMqDirectProducer.sendMsg("testExchangeTopic1", "aaa.bbb", "[aaa.bbb]test msg4... ");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return Result.success();
+    }
+
+    @GetMapping("/testKafkaProperties")
+    public Result testKafkaProperties() {
+
+        try {
+            System.out.println(111);
+            kafkaTemplate.send("admin-messages", "hello kafka");
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);
