@@ -1,0 +1,15 @@
+#spring:
+#  output:
+#    ansi:
+#      enabled: always
+#  datasource:
+#    #    url: jdbc:mysql://47.76.68.216:3306/redpig_master?useUnicode=true&characterEncoding=utf-8
+#    url: jdbc:mysql://47.76.68.216:3306/smart?useUnicode=true&characterEncoding=utf-8
+#    username: root
+#    password: P@ssw0rd123!
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#es配置
+#elasticsearch.host=47.76.68.216
+#elasticsearch.port=9300
+#elasticsearch.clustername=my-application

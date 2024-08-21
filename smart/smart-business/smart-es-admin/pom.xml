@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>smart-business</artifactId>
+        <groupId>com.yj.tech</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>smart-es-admin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <java.version>17</java.version>
+        <java.source>17</java.source>
+        <java.target>17</java.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>3.1.2</spring-boot.version>
+    </properties>
+
+    <dependencies>
+        <!-- 技术框架核心组件依赖 -->
+<!--        <dependency>-->
+<!--            <groupId>com.yj.tech</groupId>-->
+<!--            <artifactId>smart-common</artifactId>-->
+<!--            <version>${version}</version>-->
+<!--        </dependency>-->
+
+        <!-- es -->
+        <dependency>
+            <groupId>com.yj.tech</groupId>
+            <artifactId>smart-es</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

@@ -227,7 +227,10 @@ public class TestController {
 
         try {
             System.out.println(111);
-            kafkaTemplate.send("admin-messages", "hello kafka");
+            for (int i = 0; i < 10; i++) {
+                kafkaTemplate.send("admin-messages", "hello kafka" + i);
+            }
+
 
 
         } catch (Exception e) {

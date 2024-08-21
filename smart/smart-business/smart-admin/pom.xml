@@ -48,6 +48,13 @@
             <version>${version}</version>
         </dependency>
 
+        <!-- es -->
+<!--        <dependency>-->
+<!--            <groupId>com.yj.tech</groupId>-->
+<!--            <artifactId>smart-es</artifactId>-->
+<!--            <version>${version}</version>-->
+<!--        </dependency>-->
+
         <!-- AOP切面 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

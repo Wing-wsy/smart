@@ -15,6 +15,7 @@
         <module>smart-constant</module>
         <module>smart-mq-rabbitmq</module>
         <module>smart-mq-kafka</module>
+        <module>smart-es</module>
         <module>smart-file</module>
         <module>xxl-job-core</module>
     </modules>
