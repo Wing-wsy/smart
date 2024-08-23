@@ -1,15 +1,18 @@
-#spring:
-#  output:
-#    ansi:
-#      enabled: always
-#  datasource:
-#    #    url: jdbc:mysql://47.76.68.216:3306/redpig_master?useUnicode=true&characterEncoding=utf-8
-#    url: jdbc:mysql://47.76.68.216:3306/smart?useUnicode=true&characterEncoding=utf-8
-#    username: root
-#    password: P@ssw0rd123!
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-
-#es配置
-#elasticsearch.host=47.76.68.216
-#elasticsearch.port=9300
-#elasticsearch.clustername=my-application
+elasticsearch:
+  # 自定义属性---设置是否开启ES,false表不开启ES
+  open: true
+  # es 集群名称,如果下载es设置了集群名称,则使用配置的集群名称
+  clusterName: my-application
+  hosts: 47.76.68.216:9200
+  # es 请求方式
+  scheme: http
+  # es 连接超时时间
+  connectTimeOut: 1000
+  # es socket 连接超时时间
+  socketTimeOut: 30000
+  # es 请求超时时间
+  connectionRequestTimeOut: 500
+  # es 最大连接数
+  maxConnectNum: 100
+  # es 每个路由的最大连接数
+  maxConnectNumPerRoute: 100

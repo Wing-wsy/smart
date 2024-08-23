@@ -11,6 +11,7 @@
 //import org.springframework.context.annotation.Configuration;
 //
 ///**
+// * 第一种配置方式：入门配置
 // * @author wing
 // * @create 2024/8/21
 // */

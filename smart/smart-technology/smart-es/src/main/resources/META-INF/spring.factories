@@ -1,3 +1,4 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.yj.tech.es.config.ESConfig
+#    com.yj.tech.es.config.ESConfig
+    com.yj.tech.es.config.ElasticSearchConfig

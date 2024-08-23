@@ -19,7 +19,7 @@ public class TestController {
 
     @GetMapping("/es")
     public void isFollow() {
-        String indexName = "test_wing_666";
+        String indexName = "test_wing_777";
         ElasticsearchIndicesClient indices = elasticsearchClient.indices();
         ExistsRequest existsRequest = new ExistsRequest.Builder().index(indexName).build();
 
