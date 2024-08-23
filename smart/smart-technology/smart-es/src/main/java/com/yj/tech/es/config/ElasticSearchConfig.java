@@ -12,6 +12,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.convert.ReadingConverter;
+import org.springframework.data.convert.WritingConverter;
+import org.springframework.data.elasticsearch.client.ClientConfiguration;
+import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.elasticsearch.core.convert.ElasticsearchCustomConversions;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 第二种配置方式：基本配置
@@ -21,7 +32,12 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @EnableConfigurationProperties(ElasticSearchProperties.class)
-public class ElasticSearchConfig {
+public class ElasticSearchConfig extends ElasticsearchConfiguration {
+
+    private static final String LOCAL_DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    @Value("${spring.elasticsearch.uris}")
+    private List<String> uris;
 
     public RestClientBuilder creatBaseConfBuilder(ElasticSearchProperties es){
 
@@ -60,4 +76,60 @@ public class ElasticSearchConfig {
         ElasticsearchClient esClient = new ElasticsearchClient(transport);
         return esClient;
     };
+
+    @Override
+    public ClientConfiguration clientConfiguration() {
+        // 去除http开头
+        uris = uris.stream().map(uri -> {
+            if (uri.startsWith("http")) {
+                uri = uri.split("://")[1];
+            }
+            return uri;
+        }).toList();
+        return ClientConfiguration.builder()
+                .connectedTo(uris.toArray(new String[uris.size()]))
+                .build();
+    }
+
+    @Bean
+    public ElasticsearchCustomConversions elasticsearchCustomConversions() {
+        // 注入自定义转换器处理LocalDateTime数据
+        List<Converter<?, ?>> converters = new ArrayList<>(16);
+        converters.add(StringToLocalDateTimeConverter.INSTANCE);
+        converters.add(LocalDateTimeToStringConverter.INSTANCE);
+        return new ElasticsearchCustomConversions(converters);
+    }
+
+    /**
+     * LocalDateTime转String
+     */
+    @WritingConverter
+    private enum LocalDateTimeToStringConverter implements Converter<LocalDateTime, String> {
+        /**
+         * 实例化
+         */
+        INSTANCE;
+
+        @Override
+        public String convert(LocalDateTime source) {
+            return source.format(DateTimeFormatter.ofPattern(LOCAL_DATE_TIME_PATTERN));
+        }
+    }
+
+    /**
+     * String转LocalDateTime
+     */
+    @ReadingConverter
+    private enum StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
+        /**
+         * 实例化
+         */
+        INSTANCE;
+
+        @Override
+        public LocalDateTime convert(String source) {
+            return LocalDateTime.parse(source, DateTimeFormatter.ofPattern(LOCAL_DATE_TIME_PATTERN));
+        }
+    }
+
 }

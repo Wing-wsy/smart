@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
+/**
+ * 基础使用
+ */
 @RestController
 @RequestMapping("/test")
 public class TestController {
