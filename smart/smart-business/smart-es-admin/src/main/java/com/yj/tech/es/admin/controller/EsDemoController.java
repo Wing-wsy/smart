@@ -1,13 +1,21 @@
 package com.yj.tech.es.admin.controller;
 
+import co.elastic.clients.elasticsearch._types.query_dsl.TermQuery;
 import com.yj.tech.es.admin.index.EsDemo;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermQueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQuery;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.data.elasticsearch.core.query.Query;
@@ -21,8 +29,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
 
 /**
  * spring-boot-starter-data-elasticsearch 使用
@@ -62,7 +72,7 @@ public class EsDemoController {
     }
 
     /**
-     *  查
+     *  查（主键唯一查询）
      */
     @GetMapping("/{demoId}")
     public EsDemo getInfo(@PathVariable("demoId") Integer demoId) {
@@ -70,6 +80,31 @@ public class EsDemoController {
         Query query = new CriteriaQuery(criteria);
         SearchHit<EsDemo> searchHit = elasticsearchOperations.searchOne(query, EsDemo.class);
         return Objects.isNull(searchHit) ? null : searchHit.getContent();
+    }
+
+
+    /**
+     *  查（Term 关键字查询）【未测试通过，提示：unhandled Query implementation org.springframework.data.elasticsearch.client.erhlc.NativeSearchQuery】
+     */
+    @GetMapping("/term/{keyword}")
+    public List<EsDemo> getInfoByKey(@PathVariable("keyword") String keyword) {
+//        // 关键字查询，查询性为“女"的所有记录
+//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("demoId"/*字段名*/, "101"/*值*/);
+//        NativeSearchQueryBuilder nativeSearchQueryBuilder = new NativeSearchQueryBuilder();
+//        nativeSearchQueryBuilder.withQuery(termQueryBuilder);
+//        NativeSearchQuery nativeSearchQuery = nativeSearchQueryBuilder.build();
+//        SearchHits<Map> search = this.elasticsearchOperations.search(nativeSearchQuery, Map.class, IndexCoordinates.of("demo"/*索引名*/));
+
+        QueryBuilder matchSpecificFieldQuery= QueryBuilders
+                .termQuery("demoId", keyword);
+        Query searchQuery = new NativeSearchQueryBuilder()
+                .withFilter(matchSpecificFieldQuery)
+                .build();
+        SearchHits<EsDemo> searchSuggestions =
+                elasticsearchOperations.search(searchQuery,
+                        EsDemo.class,
+                        IndexCoordinates.of("demo"/*索引名*/));
+        return null;
     }
 
     /**
