@@ -6,6 +6,8 @@
     <contextName>logback</contextName>
     <property name="log.path" value="logs"></property>
     <property name="Console_Pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%logger{50}] - %msg%n"/>
+    <!-- 读取SpringBoot配置文件获取logstash的地址和端口 -->
+    <springProperty scope="context" name="logstash-host" source="log.logstash-host"/>
 
     <!-- 标准输出：控制台 -->
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
@@ -87,6 +89,13 @@
         </filter>
     </appender>
 
+    <!-- LOGSTASH 配置 -->
+    <appender name="Logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!-- 获取logstash地址作为输出的目的地 -->
+        <destination>${logstash-host}</destination>
+        <encoder chatset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
     <!-- root指定所有的打印日志级别（如果使用<logger>标签指定了打印级别，则使用logger指定的） -->
     <!-- 从低到高为（不区分大小写）：All < Trace < Debug < Info < Warn < Error < Fatal < OFF-->
     <root level="Info">
@@ -94,6 +103,7 @@
         <appender-ref ref="RollingFileInfo"/>
         <appender-ref ref="RollingFileWarn"/>
         <appender-ref ref="RollingFileError"/>
+        <appender-ref ref="Logstash" />
     </root>
 
     <!--如果指定的包需要特殊的打印日志级别<logger>标签来改变具体某个包下打印日志的级别，否则默认使用root标签配置。-->
